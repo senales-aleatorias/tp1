@@ -1,0 +1,9 @@
+
+% Generar un vector de numeros aleatorios con distribucion de Rayleigh
+nPoints = 5000;
+lambda = 1;
+rayleighRVs = rayleighRVS(nPoints, lambda);
+
+% Plotear histograma vs curva teorica
+x = linspace(min(rayleighRVs), max(rayleighRVs));
+rayleigh
