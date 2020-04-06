@@ -6,7 +6,7 @@ lambda = 1;
 rayleighRVs = rayleighRVS(nPoints, lambda);
 
 % Plotear histograma vs curva teorica
-
+figure(1)
 % Histograma
 nBins = 30;
 histogram(rayleighRVs, nBins, 'Normalization', 'pdf');
@@ -15,7 +15,7 @@ hold on
 x = linspace(min(rayleighRVs), max(rayleighRVs));
 rayleighPDF = x.*exp((-x.^2)/(2*lambda^2))/lambda^2;
 plot(x, rayleighPDF, 'LineWidth', 1.2);
-legend('Histograma', 'Funcion Densisdad de Probabilidad Teórica')
+legend('Histograma', 'Funcion Densidad de Probabilidad Teórica')
 grid('minor')
 hold off
 
@@ -35,5 +35,18 @@ stream2 = ['Error porcentual de la varianza: ', num2str(varPorcentualError), '%'
 disp(stream1)
 disp(stream2)
 
+%Loops de corridas para hacer histograma de la media
+figure(2)
+distNumber=700;
+nBins=50;
 
+for i=1:distNumber
+    meanRayleigh(i) = mean(rayleighRVS(nPoints, lambda));
+end
 
+histogram(meanRayleigh, nBins, 'Normalization', 'pdf');
+hold on
+L = ['Media de la distribución de Rayleigh, ',num2str(distNumber),' muestras.'];
+legend(L) 
+grid('minor')
+hold off
