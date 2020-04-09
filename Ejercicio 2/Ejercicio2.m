@@ -2,8 +2,8 @@
 mu1= 1;
 mu2= 2;
 sigma1 = 0.5;
-sigma2 = 0.5;
-rho = 0.5;
+sigma2 = 1;
+rho = 0.8;
 n = 100000; %Repeticiones del experimento
 
 %Generamos la matriz A para realizar la transformación lineal.
@@ -36,8 +36,8 @@ Y2 = a21*X1 + a22*X2 + mu2;
 %Ploteo
 
 plot(Y1,Y2,'.');
-xlabel("Variable Aleatoria 1");
-ylabel("Variable Aleatoria 2");
-title("Ejericico 2a"); %NO OLVIDAR DE CAMBIAR EL TITULO
+xlabel("Y1");
+ylabel("Y2");
+title("Ejericico 2b"); %NO OLVIDAR DE CAMBIAR EL TITULO
 grid on;
 
