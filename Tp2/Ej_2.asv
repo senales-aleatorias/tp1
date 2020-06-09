@@ -39,15 +39,9 @@ R_xx_p=R_xx_p(2:end);
 r_xx_p=R_xx_p./R_xx_p(1);
 
 %%ahora paso a calcular los coeficientes de correlacion parciales
-plot([0:Sn-1],r_xx_np,'b-',[0:Sn-1],r_xx_p,'r');
-%hold on 
-%plot(r_xx_p,'r');
-title('Estimador de la autocorrelacion');
-xlabel('Muestras');
-ylabel('Amplitud');
-legend('Estimador no polarizado','Estimador polarizado');
-grid on;
+plot(r_xx_np);
 phikk=r_xx_np(2);
+title('estimador de la autocorrelacion');
 
 for p=2:Sn-1
     %con esto se crea la matriz de Yule-Walker para encontrar los
@@ -59,10 +53,7 @@ for p=2:Sn-1
 end
 figure
 plot(phikk)
-title('Coeficentes parciales');
-xlabel('Muestras');
-ylabel('Amplitud');
-grid on;
+title('coeficentes parciales');
 
 
 %analizando los graficos anteriores se ve que por lo menos corresponde a un
@@ -70,11 +61,8 @@ grid on;
 
 %%busco los phi_p,i
 YuleWalker=toeplitz([r_xx_np(1:3)]);
-phi_p_i=linsolve(YuleWalker,r_xx_np(2:4).'); %%estos son los del punto 3
+sol=sol=linsolve(YuleWalker,r_xx_np(2:4).');
 
-%%calculo los coeficientes reales
-
-r_xx_calc=[1,r_xx_np(2:4)];
 
 
 
