@@ -19,25 +19,9 @@ stairs(t,val)
 grid minor;
 
 %%Valor esperado
-
 %Teorico
 EX4_teo = lambda*4;
-EX4_calc = 0;
-
-
-
-for i = 1:numMuestras
-    temp = 0;
-    for u =1:numTime
-        if (t(u,i)>4)
-            if(temp <= 0)
-                temp = u-1;
-            end
-        end
-    end
-    EX4_calc = EX4_calc + val(temp,i)/numMuestras;
-    
-end
+EX4_calc = valorEsperado(t,val,numMuestras,numTime,4);
 EX4_teo
 EX4_calc
 
@@ -45,24 +29,7 @@ EX4_calc
 
 VAR7_teo = lambda*7;
 VAR7_calc = 0;
-EX7_calc = 0;
-
-
-
-for i = 1:numMuestras
-    temp = 0;
-    for u =1:numTime
-        if (t(u,i)>7)
-            if(temp <= 0)
-                temp = u-1;
-            end
-        end
-    end
-    EX7_calc = EX7_calc + val(temp,i)/numMuestras;
-    
-end
-
-
+EX7_calc = valorEsperado(t,val,numMuestras,numTime,7);
 for i = 1:numMuestras
     temp = 0;
     for u =1:numTime
@@ -83,27 +50,7 @@ VAR7_calc
 %%RXX
 
 RXX58_teo=lambda^2 * 5 * 8 + 5;
-RXX58_calc = 0;
-
-
-for i = 1:numMuestras
-    temp1 = 0;
-    temp2 = 0;
-    for u =1:numTime
-        if (t(u,i)>5)
-            if(temp1 <= 0)
-                temp1 = u-1;
-            end
-        end
-        if (t(u,i)>8)
-            if(temp2 <= 0)
-                temp2 = u-1;
-            end
-        end
-    end
-    RXX58_calc = RXX58_calc + val(temp1,i)*val(temp2,i)/numMuestras;
-end
-
+RXX58_calc = RXX(t,val,numMuestras,numTime,5,8);
 RXX58_teo
 RXX58_calc
 
